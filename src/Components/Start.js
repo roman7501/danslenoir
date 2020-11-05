@@ -5,8 +5,6 @@ import dataTitres from "../data/dataTitres";
 import Sub from "./Sub";
 import Titre from "./Titre";
 import styled from "styled-components";
-import { AnimatePresence } from "framer-motion";
-import { motion } from "framer-motion";
 
 const Start = ({ className }) => {
   const [letsPlay, setLetsPlay] = useState(false);

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { pxToRem } from "../theme/helpers";
-import { motion } from "framer-motion";
 
 const Titre = ({ text, className }) => {
   //   const fadeTitre = {
@@ -17,17 +16,17 @@ const Titre = ({ text, className }) => {
   //       transition: { duration: 2 },
   //     },
   //   };
-  const variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration: 3 },
-    },
-    exit: {
-      opacity: 0,
-      transition: { duration: 4 },
-    },
-  };
+  // const variants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: { duration: 3 },
+  //   },
+  //   exit: {
+  //     opacity: 0,
+  //     transition: { duration: 4 },
+  //   },
+  // };
   return (
     <div
       className={className}
