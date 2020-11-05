@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import arrow from "../icons/arrow-down.png";
 import { fonts, pxToRem } from "../theme/helpers";
+import { motion } from "framer-motion";
 
 const Header = ({ className }) => {
   return (
@@ -16,7 +17,12 @@ const Header = ({ className }) => {
         </p>
       </section>
 
-      <img className="icon" src={arrow} alt="scroll" />
+      <motion.img
+        whileHover={{ scale: 1.1 }}
+        className="icon"
+        src={arrow}
+        alt="scroll"
+      />
     </div>
   );
 };
@@ -48,7 +54,7 @@ export default styled(Header)`
   }
   .sous-titre {
     font-family: ${fonts.body};
-    font-size: ${pxToRem(16)};
+
     letter-spacing: ${fonts.space};
     margin-top: 6rem;
   }
@@ -74,9 +80,10 @@ export default styled(Header)`
       margin-right: 20px;
       margin-left: 20px;
       font-size: ${pxToRem(12)};
-      position: absolute;
-      bottom: 40vw;
       text-align: center;
+    }
+    .icon {
+      margin-bottom: 120px;
     }
   }
 `;

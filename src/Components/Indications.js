@@ -2,15 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { fonts } from "../theme/helpers";
 
-const Sub = ({ text, className }) => {
+const Indications = ({ className }) => {
   return (
     <div className={className}>
-      <p>{text}</p>
+      <div className="container">
+        <p>installez-vous</p>
+        <p>vous pouvez éteindre les lumières</p>
+        <p>ça va bientôt commencer</p>
+      </div>
     </div>
   );
 };
 
-export default styled(Sub)`
+export default styled(Indications)`
   height: 90vh;
   display: flex;
   flex-direction: column;
@@ -19,8 +23,10 @@ export default styled(Sub)`
   font-family: ${fonts.body};
   letter-spacing: ${fonts.space};
   line-height: 2.5;
-
+  .container {
+    transform: translate(-60px, 50px);
+  }
   p {
-    transform: translate(-20vw, 50px);
+    text-align: left;
   }
 `;

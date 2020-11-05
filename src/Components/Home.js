@@ -81,6 +81,7 @@ export default styled(Home)`
     }
     .generique {
       position: relative;
+      margin: 0 0 20px 30px;
     }
   }
 `;
