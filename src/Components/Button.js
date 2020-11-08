@@ -1,9 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { fonts } from "../theme/helpers";
+import { motion } from "framer-motion";
 
 const Button = ({ text, className }) => {
-  return <button className={className}>{text}</button>;
+  return (
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.9 }}
+      className={className}
+    >
+      {text}
+    </motion.button>
+  );
 };
 
 export default styled(Button)`

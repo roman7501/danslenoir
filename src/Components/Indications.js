@@ -1,16 +1,63 @@
 import React from "react";
 import styled from "styled-components";
 import { fonts } from "../theme/helpers";
+import { motion } from "framer-motion";
 
 const Indications = ({ className }) => {
+  const timeFade = 10;
+  const variants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: timeFade,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 10,
+      },
+    },
+  };
   return (
-    <div className={className}>
+    <motion.div
+      className={className}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={variants}
+    >
       <div className="container">
-        <p>installez-vous</p>
-        <p>vous pouvez éteindre les lumières</p>
-        <p>ça va bientôt commencer</p>
+        <p> ça va bientôt commencer</p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: {
+              duration: 7,
+              delay: 7,
+            },
+          }}
+        >
+          installez-vous
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: {
+              duration: 10,
+              delay: 30,
+            },
+          }}
+        >
+          si vous voulez, vous pouvez éteindre les lumières
+        </motion.p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

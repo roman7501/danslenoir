@@ -44,8 +44,29 @@ const Countdown = ({ className }) => {
 
   const timer = setInterval(countdown, 1000);
 
+  // Motion
+  // const containerVariants = {
+  //   hidden: {
+  //     opacity: 0,
+  //   },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: { delay: 2, duration: 1.5 },
+  //   },
+  //   exit: {
+  //     opacity: 0,
+  //     transition: { duration: 1.5 },
+  //   },
+  // };
+
   return (
-    <div className={className}>
+    <div
+      className={className}
+      // variants={containerVariants}
+      // initial="hidden"
+      // animate="visible"
+      // exit="exit"
+    >
       <Link to="/">
         <Retour className="retour" text="retour" />
       </Link>

@@ -12,10 +12,8 @@ const Spectacle = ({ className }) => {
         <Link to="/horloge">
           <Button className="button" text="commencer" />
         </Link>
-        <a href="https://infallible-heisenberg-548b15.netlify.app/constellation">
-          constellation
-        </a>
-        <p>durée: 30min</p>
+
+        <p>durée: 20min</p>
       </div>
     </div>
   );

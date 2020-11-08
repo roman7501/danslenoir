@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import arrow from "../icons/arrow-down.png";
+import Arrow from "./Arrow";
 import { fonts, pxToRem } from "../theme/helpers";
-import { motion } from "framer-motion";
 
 const Header = ({ className }) => {
   return (
@@ -16,13 +15,7 @@ const Header = ({ className }) => {
           spectacle à inventer tous les soirs à 20h30
         </p>
       </section>
-
-      <motion.img
-        whileHover={{ scale: 1.1 }}
-        className="icon"
-        src={arrow}
-        alt="scroll"
-      />
+      <Arrow className="icon" />
     </div>
   );
 };
@@ -61,7 +54,7 @@ export default styled(Header)`
   .icon {
     position: absolute;
     bottom: 0;
-    margin-bottom: 40px;
+    margin-bottom: 100px;
   }
 
   @media (max-width: 600px) {

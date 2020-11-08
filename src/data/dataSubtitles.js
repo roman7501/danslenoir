@@ -1,45 +1,40 @@
 const dataSubtitles = {
   subtitles: [
-    {
-      start: "0",
-      end: "2",
-      text: "Les lumières se baissent",
-    },
-    {
-      start: "3",
-      end: "5",
-      text: "Petite apparaît",
-    },
-    {
-      start: "5",
-      end: "7",
-      text: "Petite apparaît",
-    },
-    {
-      start: "8",
-      end: "9",
-      text: "Un oiseau deux têtes apparait",
-    },
-    {
-      start: "10",
-      end: "12",
-      text: "Petite disparait par la porte",
-    },
-    {
-      start: "13",
-      end: "15",
-      text: "Une pierre se met à briller",
-    },
-    {
-      start: "17",
-      end: "19",
-      text: "Un feu apparait",
-    },
-    {
-      start: "20",
-      end: "22",
-      text: "Des étincelles s'en échappent",
-    },
+    // {
+    //   start: "13",
+    //   end: "15",
+    //   text: "Petite apparaît",
+    // },
+    // {
+    //   start: "15",
+    //   end: "17",
+    //   text: "Petite disparaît",
+    // },
+    // {
+    //   start: "18",
+    //   end: "19",
+    //   text: "Un oiseau deux têtes apparait",
+    // },
+    // {
+    //   start: "20",
+    //   end: "22",
+    //   text: "Petite disparait par la porte",
+    // },
+    // {
+    //   start: "33",
+    //   end: "35",
+    //   text: "Une pierre se met à briller",
+    // },
+    // {
+    //   start: "57",
+    //   end: "59",
+    //   text: "Un feu apparait",
+    // },
+    // {
+    //   start: "60",
+    //   end: "62",
+    //   text: "Des étincelles s'en échappent",
+    // },
   ],
 };
 

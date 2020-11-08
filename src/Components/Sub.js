@@ -1,12 +1,36 @@
 import React from "react";
 import styled from "styled-components";
 import { fonts } from "../theme/helpers";
+import { motion } from "framer-motion";
 
-const Sub = ({ text, className }) => {
+const Sub = ({ text, className, key }) => {
+  const variants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 3,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 3,
+      },
+    },
+  };
   return (
-    <div className={className}>
+    <motion.div
+      className={className}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={variants}
+    >
       <p>{text}</p>
-    </div>
+    </motion.div>
   );
 };
 

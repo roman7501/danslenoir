@@ -5,13 +5,46 @@ import Spectacle from "./Spectacle";
 import plumes from "../images/plumes-low.jpg";
 import styled from "styled-components";
 import { fonts, pxToRem } from "../theme/helpers";
+import { motion } from "framer-motion";
 
 const Home = ({ className }) => {
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: { delay: 1, duration: 1.5 },
+    },
+    exit: {
+      opacity: 0,
+
+      transition: { duration: 1.5 },
+    },
+  };
   return (
-    <div className={className}>
+    <motion.div
+      className={className}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <div className="bg">
-        <Header />
-        <Description />
+        <motion.div
+          className="fade-in"
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: {
+              duration: 1,
+              delay: 2,
+            },
+          }}
+        >
+          <Header />
+          <Description />
+        </motion.div>
       </div>
       <p className="citation">
         « Chaque matin, des enfants partent sans inquiétude. Tout est près.{" "}
@@ -36,7 +69,7 @@ const Home = ({ className }) => {
         Théâtre La Passerelle - Scène Nationale de Gap Théâtre de Vanves, Le
         Centquatre-Paris
       </div>
-    </div>
+    </motion.div>
   );
 };
 
