@@ -4,31 +4,37 @@ import styled from "styled-components";
 import { fonts, pxToRem } from "../theme/helpers";
 import Button from "./Button";
 import Retour from "./Retour";
+import { motion } from "framer-motion";
 
 const Countdown = ({ className }) => {
   const [counter, setCounter] = useState(null);
   const [itsTime, setItsTime] = useState(false);
 
   const countdown = () => {
+    const datePrevu = new Date("Nov 29 20:30:00 2025");
     const dateNow = new Date();
-    const datePrevu = new Date("Nov 3 12:25:00 2020");
     let totalSeconds = (datePrevu - dateNow) / 1000;
-    if (totalSeconds < 0) {
-      totalSeconds = Math.abs(totalSeconds);
+
+    const jours = Math.floor(totalSeconds / (60 * 60 * 24));
+    let heures = Math.floor((totalSeconds - jours * 60 * 60 * 24) / (60 * 60));
+    let minutes = Math.floor(
+      (totalSeconds - (jours * 60 * 60 * 24 + heures * 60 * 60)) / 60
+    );
+    let seconds = Math.floor(
+      totalSeconds - (jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)
+    );
+
+    const allSeconds = heures * 60 * 60 + minutes * 60 + seconds;
+    // délai=10minutes
+    const delay = 85800;
+
+    if (allSeconds > delay) {
+      console.log(allSeconds);
       setItsTime(true);
       clearInterval(timer);
     }
-    if (totalSeconds > 0) {
-      const jours = Math.floor(totalSeconds / (60 * 60 * 24));
-      let heures = Math.floor(
-        (totalSeconds - jours * 60 * 60 * 24) / (60 * 60)
-      );
-      let minutes = Math.floor(
-        (totalSeconds - (jours * 60 * 60 * 24 + heures * 60 * 60)) / 60
-      );
-      let seconds = Math.floor(
-        totalSeconds - (jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)
-      );
+    if (allSeconds < delay) {
+      console.log(allSeconds);
       if (seconds < 10) {
         seconds = "0" + seconds;
       }
@@ -45,27 +51,27 @@ const Countdown = ({ className }) => {
   const timer = setInterval(countdown, 1000);
 
   // Motion
-  // const containerVariants = {
-  //   hidden: {
-  //     opacity: 0,
-  //   },
-  //   visible: {
-  //     opacity: 1,
-  //     transition: { delay: 2, duration: 1.5 },
-  //   },
-  //   exit: {
-  //     opacity: 0,
-  //     transition: { duration: 1.5 },
-  //   },
-  // };
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: { delay: 1, duration: 1 },
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 1.5 },
+    },
+  };
 
   return (
-    <div
+    <motion.div
       className={className}
-      // variants={containerVariants}
-      // initial="hidden"
-      // animate="visible"
-      // exit="exit"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
     >
       <Link to="/">
         <Retour className="retour" text="retour" />
@@ -76,6 +82,9 @@ const Countdown = ({ className }) => {
             <p>prochaine écoute dans</p>
             <p className="counter">{counter}</p>
           </div>
+          <Link to="/conte" style={{ marginLeft: "100px" }}>
+            <Button className="btn" text="commencer en avant première" />
+          </Link>
         </>
       )}
       {itsTime && (
@@ -85,13 +94,13 @@ const Countdown = ({ className }) => {
           </Link>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
 export default styled(Countdown)`
   font-family: ${fonts.body};
-  font-size: ${pxToRem(16)};
+  font-size: ${pxToRem(20)};
   letter-spacing: 0.1rem;
   .retour {
     margin-top: 30px;

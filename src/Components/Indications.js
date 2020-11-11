@@ -50,7 +50,7 @@ const Indications = ({ className }) => {
             opacity: 1,
             transition: {
               duration: 10,
-              delay: 30,
+              delay: 20,
             },
           }}
         >

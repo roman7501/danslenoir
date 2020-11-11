@@ -8,7 +8,7 @@ const Retour = ({ className, text }) => {
 
 export default styled(Retour)`
   font-family: ${fonts.body};
-  font-size: ${pxToRem(16)};
+  font-size: ${pxToRem(20)};
   letter-spacing: 0.1rem;
   border: none;
   background: transparent;

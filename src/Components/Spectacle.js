@@ -41,7 +41,7 @@ export default styled(Spectacle)`
     margin-top: 70px;
   }
   .start p {
-    font-size: ${pxToRem(14)};
+    font-size: ${pxToRem(16)};
   }
 
   @media (max-width: 900px) {

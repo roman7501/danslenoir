@@ -9,7 +9,7 @@ const Header = ({ className }) => {
       <section>
         <div className="titre">
           <h1>La langue des oiseaux</h1>
-          <h3>dans le noir</h3>
+          <h1 className="dans-le-noir">dans le noir</h1>
         </div>
         <p className="sous-titre">
           spectacle à inventer tous les soirs à 20h30
@@ -27,12 +27,13 @@ export default styled(Header)`
   align-items: center;
   position: relative;
   section {
-    margin-top: 30vh;
+    margin-top: 17vh;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .titre {
+    font-size: ${pxToRem(28)};
     font-family: freight-big-pro, serif;
     font-weight: 300;
     font-style: normal;
@@ -40,16 +41,18 @@ export default styled(Header)`
     letter-spacing: 0.3rem;
     position: relative;
   }
-  .titre h3 {
+  .dans-le-noir {
     position: absolute;
     opacity: 0.6;
     right: 0;
+    margin: 0;
   }
   .sous-titre {
     font-family: ${fonts.body};
-
-    letter-spacing: ${fonts.space};
-    margin-top: 6rem;
+    letter-spacing: 0.2rem;
+    font-size: ${pxToRem(18)};
+    font-style: italic;
+    margin-top: 12rem;
   }
   .icon {
     position: absolute;

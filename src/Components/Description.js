@@ -27,7 +27,7 @@ export default styled(Description)`
   p {
     margin-top: 70px;
     font-family: ${fonts.body};
-    font-size: ${pxToRem(16)};
+    font-size: ${pxToRem(18)};
     letter-spacing: ${fonts.space};
     line-height: ${fonts.line};
   }
