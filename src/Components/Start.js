@@ -104,7 +104,6 @@ const Start = ({ className }) => {
         <div className="play">
           <audio
             autoPlay
-            muted
             controls
             onTimeUpdate={(e) => setAudioTime(e.target.currentTime)}
             src="https://firebasestorage.googleapis.com/v0/b/dans-le-noir-62252.appspot.com/o/LDO-AUDIO-V8.mp3?alt=media&token=1967b362-a415-4f59-91ef-d80427d500d7"
