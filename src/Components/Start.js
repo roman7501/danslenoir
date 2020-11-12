@@ -12,10 +12,11 @@ import Buttons from "./Buttons";
 const Start = ({ className }) => {
   const [letsPlay, setLetsPlay] = useState(false);
   const [indications, setIndications] = useState(true);
+  const [itsTooLate, setItsTooLate] = useState(null);
   const [audioTime, setAudioTime] = useState(0);
 
   // Display indications
-  const start = 0;
+  const start = 50000;
 
   // 50000;
 
@@ -24,11 +25,25 @@ const Start = ({ className }) => {
     setTimeout(() => setIndications(false), start);
   }, [letsPlay, indications]);
 
+  useEffect(() => {
+    const dateNow = new Date();
+    const hours = dateNow.getHours();
+    // Desactiver la page en dehors de 20h
+    if (hours === 20) {
+      setItsTooLate(false);
+    } else {
+      // change this line to true <-----------------------
+      setItsTooLate(false);
+      console.log(hours);
+    }
+  }, [itsTooLate]);
+
   // Subtitles
   const subtitles = dataSubtitles.subtitles;
 
   const textFinal = Object.keys(subtitles).map((el) => {
     if (audioTime >= 1120) {
+      localStorage.removeItem("audioTime");
       return (
         <motion.div
           initial={{ opacity: 0 }}
@@ -92,36 +107,40 @@ const Start = ({ className }) => {
   };
 
   return (
-    <motion.div
-      className={className}
-      // animate="animationOne"
-      // variants={variants}
-    >
-      <AnimatePresence>
-        {indications && <Indications className="indications" />}
-      </AnimatePresence>
-      {letsPlay && (
-        <div className="play">
-          <audio
-            autoPlay
-            controls
-            onTimeUpdate={(e) => setAudioTime(e.target.currentTime)}
-            src="https://firebasestorage.googleapis.com/v0/b/dans-le-noir-62252.appspot.com/o/LDO-AUDIO-V8.mp3?alt=media&token=1967b362-a415-4f59-91ef-d80427d500d7"
-          ></audio>
-          <div
-            className="titre"
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={variants}
-          >
-            <AnimatePresence>{titre}</AnimatePresence>
-          </div>
+    <div className={className}>
+      {!itsTooLate && (
+        <motion.div
+        // animate="animationOne"
+        // variants={variants}
+        >
+          <AnimatePresence>
+            {indications && <Indications className="indications" />}
+          </AnimatePresence>
+          {letsPlay && (
+            <div className="play">
+              <audio
+                autoPlay
+                controls
+                onTimeUpdate={(e) => setAudioTime(e.target.currentTime)}
+                src="https://firebasestorage.googleapis.com/v0/b/dans-le-noir-62252.appspot.com/o/LDO-AUDIO-V8.mp3?alt=media&token=1967b362-a415-4f59-91ef-d80427d500d7"
+              ></audio>
+              <div
+                className="titre"
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={variants}
+              >
+                <AnimatePresence>{titre}</AnimatePresence>
+              </div>
 
-          <div className="text-final">{textFinal}</div>
-        </div>
+              <div className="text-final">{textFinal}</div>
+            </div>
+          )}
+        </motion.div>
       )}
-    </motion.div>
+      {itsTooLate && <p className="too-late">Ce n'est pas encore l'heure</p>}
+    </div>
   );
 };
 
@@ -144,5 +163,11 @@ export default styled(Start)`
   .buttons {
     margin-top: 60px;
     margin-bottom: 50px;
+  }
+  .too-late {
+    font-family: ${fonts.body};
+    font-size: ${pxToRem(18)};
+    letter-spacing: ${fonts.space};
+    margin: 100px;
   }
 `;

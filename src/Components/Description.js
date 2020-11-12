@@ -24,6 +24,7 @@ const Description = ({ className }) => {
 
 export default styled(Description)`
   margin-left: 10vw;
+  margin-right: 15px;
   p {
     margin-top: 70px;
     font-family: ${fonts.body};

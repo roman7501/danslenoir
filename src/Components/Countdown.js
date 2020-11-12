@@ -34,7 +34,6 @@ const Countdown = ({ className }) => {
       clearInterval(timer);
     }
     if (allSeconds < delay) {
-      console.log(allSeconds);
       if (seconds < 10) {
         seconds = "0" + seconds;
       }
