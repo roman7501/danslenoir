@@ -16,7 +16,7 @@ const Description = ({ className }) => {
         Nous avons fait de cet objet théâtral une pièce sonore. <br />
         Le confinement nous ayant pris en toute fin de création, le terme du
         spectacle est resté flottant, inachevé - une porte ouverte. <br />
-        <p>À vous, si vous le voulez, d’inventer votre propre fin.</p>{" "}
+        <br />À vous, si vous le voulez, d’inventer votre propre fin.
       </p>
     </div>
   );

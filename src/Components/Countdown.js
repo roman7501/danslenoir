@@ -29,7 +29,6 @@ const Countdown = ({ className }) => {
     const delay = 85800;
 
     if (allSeconds > delay) {
-      console.log(allSeconds);
       setItsTime(true);
       clearInterval(timer);
     }
@@ -113,11 +112,8 @@ export default styled(Countdown)`
     flex-direction: column;
     letter-spacing: 0.1rem;
   }
-  .round {
-    width: 30px;
-    height: 30px;
-    border: none;
-    background: white;
-    border-radius: 50%;
+
+  @media (max-width: 600px) {
+    font-size: ${pxToRem(16)};
   }
 `;

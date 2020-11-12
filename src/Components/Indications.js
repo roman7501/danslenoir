@@ -68,7 +68,7 @@ const Indications = ({ className }) => {
           },
         }}
       >
-        - Attention, si vous rechargez la page le son reprendra du début -
+        - Attention, si vous rechargez la page le son reprendra au début -
       </motion.p>
     </motion.div>
   );
@@ -92,6 +92,13 @@ export default styled(Indications)`
   }
   .important {
     margin-top: 160px;
-    font-size: ${pxToRem(16)};
+    font-size: ${pxToRem(18)};
+  }
+  @media (max-width: 600px) {
+    .container {
+      transform: translate(0px, 0px);
+    }
+    font-size: 16px;
+    padding: 20px;
   }
 `;

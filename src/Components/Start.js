@@ -34,7 +34,6 @@ const Start = ({ className }) => {
     } else {
       // change this line to true <-----------------------
       setItsTooLate(false);
-      console.log(hours);
     }
   }, [itsTooLate]);
 
@@ -42,7 +41,7 @@ const Start = ({ className }) => {
   const subtitles = dataSubtitles.subtitles;
 
   const textFinal = Object.keys(subtitles).map((el) => {
-    if (audioTime >= 1120) {
+    if (audioTime >= 1078) {
       localStorage.removeItem("audioTime");
       return (
         <motion.div
@@ -50,7 +49,7 @@ const Start = ({ className }) => {
           animate={{
             opacity: 1,
             transition: {
-              duration: 20,
+              duration: 40,
               delay: 0,
             },
           }}
@@ -58,15 +57,16 @@ const Start = ({ className }) => {
           <p>
             Le spectacle en est là aujourd’hui <br /> Nous ne savons pas encore
             quand ni dans quelles conditions nous pourrons le terminer <br />
-            Merci de l’avoir écouté <br /> Il est rare d’avoir l’occasion de
-            présenter une pièce dans cet état-là d’entre-deux, inachevée et
-            ouverte. <br />
+            <br />
+            Merci de l’avoir écouté <br /> <br />
+            Il est rare d’avoir l’occasion de présenter une pièce dans cet
+            état-là d’entre-deux, inachevée et ouverte. <br />
             Nous avons voulu en profiter pour proposer à chacun.e d’inventer sa
             propre fin, <br /> et conserver le souvenir de ces passages -
-            permettre à tous.tes d’entendre ces traces <br /> Pour celleux qui
-            le souhaitent, nous mettons à disposition un numéro de téléphone où
-            vous pourrez laisser un message, raconter la fin de l’histoire que
-            vous venez d’entendre <br />
+            permettre à tous.tes d’entendre ces traces <br />
+            <br /> Pour celleux qui le souhaitent, nous mettons à disposition un
+            numéro de téléphone où vous pourrez laisser un message, raconter la
+            fin de l’histoire que vous venez d’entendre <br />
             <br /> Ces dénouements alternatifs resteront audibles sur le site,
             au terme de chaque écoute
           </p>
@@ -120,9 +120,8 @@ const Start = ({ className }) => {
             <div className="play">
               <audio
                 autoPlay
-                controls
                 onTimeUpdate={(e) => setAudioTime(e.target.currentTime)}
-                src="https://firebasestorage.googleapis.com/v0/b/dans-le-noir-62252.appspot.com/o/LDO-AUDIO-V8.mp3?alt=media&token=1967b362-a415-4f59-91ef-d80427d500d7"
+                src="https://firebasestorage.googleapis.com/v0/b/dans-le-noir-62252.appspot.com/o/LDO-Audio-V12.mp3?alt=media&token=264967ef-6f25-4e4a-9d40-37d448150e63"
               ></audio>
               <div
                 className="titre"
@@ -158,7 +157,7 @@ export default styled(Start)`
     font-family: ${fonts.body};
     font-size: ${pxToRem(18)};
     letter-spacing: ${fonts.space};
-    line-height: ${fonts.line};
+    line-height: 2;
   }
   .buttons {
     margin-top: 60px;
