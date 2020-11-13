@@ -17,7 +17,7 @@ const Start = ({ className }) => {
   const [isPlay, setIsPlay] = useState(false);
 
   // Display indications
-  const start = 0;
+  const start = 50000;
 
   // 50000;
 
@@ -120,7 +120,7 @@ const Start = ({ className }) => {
     exit: {
       opacity: 0,
       transition: {
-        duration: 5,
+        duration: 0.7,
       },
     },
   };
@@ -145,8 +145,9 @@ const Start = ({ className }) => {
                     animate="visible"
                     exit="exit"
                     variants={variantsButton}
+                    whileTap={{ scale: 0.9 }}
                   >
-                    aller dans le noir
+                    écouter
                   </motion.button>
                 )}
               </AnimatePresence>
@@ -154,7 +155,6 @@ const Start = ({ className }) => {
                 <div className="play">
                   <audio
                     autoPlay={true}
-                    controls
                     onTimeUpdate={(e) => setAudioTime(e.target.currentTime)}
                     src="https://firebasestorage.googleapis.com/v0/b/dans-le-noir-62252.appspot.com/o/LDO-Audio-V12.mp3?alt=media&token=264967ef-6f25-4e4a-9d40-37d448150e63"
                   ></audio>
@@ -208,8 +208,8 @@ export default styled(Start)`
   }
   .button-play {
     position: fixed;
-    bottom: 17vh;
-    right: 20vw;
+    bottom: 45vh;
+    right: calc(40vw - 40px);
     background: none;
     border: solid 1px #fff;
     color: #fff;
