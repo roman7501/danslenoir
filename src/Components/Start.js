@@ -16,7 +16,7 @@ const Start = ({ className }) => {
   const [audioTime, setAudioTime] = useState(0);
 
   // Display indications
-  const start = 50000;
+  const start = 0;
 
   // 50000;
 
@@ -119,7 +119,8 @@ const Start = ({ className }) => {
           {letsPlay && (
             <div className="play">
               <audio
-                autoPlay
+                autoPlay={true}
+                controls
                 onTimeUpdate={(e) => setAudioTime(e.target.currentTime)}
                 src="https://firebasestorage.googleapis.com/v0/b/dans-le-noir-62252.appspot.com/o/LDO-Audio-V12.mp3?alt=media&token=264967ef-6f25-4e4a-9d40-37d448150e63"
               ></audio>
