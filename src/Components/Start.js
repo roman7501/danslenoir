@@ -14,6 +14,7 @@ const Start = ({ className }) => {
   const [indications, setIndications] = useState(true);
   const [itsTooLate, setItsTooLate] = useState(null);
   const [audioTime, setAudioTime] = useState(0);
+  const [isPlay, setIsPlay] = useState(false);
 
   // Display indications
   const start = 0;
@@ -97,15 +98,32 @@ const Start = ({ className }) => {
       return null;
     }
   });
-  const variants = {
-    // animationOne: {
-    //   backgroundColor: ["#000000", "#050505"],
-    //   transition: {
-    //     backgroundColor: { yoyo: Infinity, duration: 0.2 },
-    //   },
-    // },
-  };
+  // const variants = {
+  //   // animationOne: {
+  //   //   backgroundColor: ["#000000", "#050505"],
+  //   //   transition: {
+  //   //     backgroundColor: { yoyo: Infinity, duration: 0.2 },
+  //   //   },
+  //   // },
+  // };
 
+  const variantsButton = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 0.8,
+      transition: {
+        duration: 5,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 5,
+      },
+    },
+  };
   return (
     <div className={className}>
       {!itsTooLate && (
@@ -117,25 +135,43 @@ const Start = ({ className }) => {
             {indications && <Indications className="indications" />}
           </AnimatePresence>
           {letsPlay && (
-            <div className="play">
-              <audio
-                autoPlay={true}
-                controls
-                onTimeUpdate={(e) => setAudioTime(e.target.currentTime)}
-                src="https://firebasestorage.googleapis.com/v0/b/dans-le-noir-62252.appspot.com/o/LDO-Audio-V12.mp3?alt=media&token=264967ef-6f25-4e4a-9d40-37d448150e63"
-              ></audio>
-              <div
-                className="titre"
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={variants}
-              >
-                <AnimatePresence>{titre}</AnimatePresence>
-              </div>
+            <>
+              <AnimatePresence>
+                {!isPlay && (
+                  <motion.button
+                    onClick={() => setIsPlay(true)}
+                    className="button-play"
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={variantsButton}
+                  >
+                    aller dans le noir
+                  </motion.button>
+                )}
+              </AnimatePresence>
+              {isPlay && (
+                <div className="play">
+                  <audio
+                    autoPlay={true}
+                    controls
+                    onTimeUpdate={(e) => setAudioTime(e.target.currentTime)}
+                    src="https://firebasestorage.googleapis.com/v0/b/dans-le-noir-62252.appspot.com/o/LDO-Audio-V12.mp3?alt=media&token=264967ef-6f25-4e4a-9d40-37d448150e63"
+                  ></audio>
+                  <div
+                    className="titre"
+                    // initial="hidden"
+                    // animate="visible"
+                    // exit="exit"
+                    // variants={variants}
+                  >
+                    <AnimatePresence>{titre}</AnimatePresence>
+                  </div>
 
-              <div className="text-final">{textFinal}</div>
-            </div>
+                  <div className="text-final">{textFinal}</div>
+                </div>
+              )}
+            </>
           )}
         </motion.div>
       )}
@@ -169,5 +205,19 @@ export default styled(Start)`
     font-size: ${pxToRem(18)};
     letter-spacing: ${fonts.space};
     margin: 100px;
+  }
+  .button-play {
+    position: fixed;
+    bottom: 17vh;
+    right: 20vw;
+    background: none;
+    border: solid 1px #fff;
+    color: #fff;
+    border-radius: 50px;
+    padding: 10px 50px;
+    font-family: ${fonts.body};
+    font-size: ${pxToRem(16)};
+    font-weight: 500;
+    outline: none;
   }
 `;
